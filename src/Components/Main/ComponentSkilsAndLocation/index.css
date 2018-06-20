@@ -1,0 +1,33 @@
+.ComponentSkillsAndLocation {
+  display: grid;
+}
+.SkillsDesign {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+  width: 100%;
+}
+.SkillsDesign input[type="radio"] {
+  display: none;
+}
+.SkillsDesign input[type="radio"] + label {
+  width: 20%;
+  text-align: center;
+  border: 1px solid white;
+  padding: 10px;
+}
+.SkillsDesign input[type="radio"]:checked + label {
+  background-color: #1fb3e5;
+  color: white;
+}
+.SkillAndLocation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.CheckBox {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+}
+.CheckBox * {
+  align-self: center;
+}
