@@ -1,0 +1,11 @@
+.ComponentButton{
+    padding:7px 15px ; 
+    background-color:#1FB3E5;
+    color:white;
+    border:none;
+    width: fit-content;
+    font-size:1rem;
+}
+.ComponentButton:disabled{
+    background-color:gray;
+}

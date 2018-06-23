@@ -14,6 +14,23 @@ import ComponentSkilsAndLocation from "./ComponentSkilsAndLocation";
 import ComponentPorfolio from "./ComponentPorfolio";
 
 export class Main extends Component {
+  state={
+			fullName:"",
+			email:"",
+			reEmail:"",
+			phone:"",
+			address:"",
+			city:"",
+			state:"",
+			country:"",
+			postalCode:"",
+			hearAboutUs:"",
+			skillsDesign:[],
+			experiencedSkills:[],
+			wokingLocation:[],
+			porfolioLink:"",
+			additionalInformation:"",
+		}
   render() {
     return (
       <div className={styles.Main}>
@@ -22,7 +39,7 @@ export class Main extends Component {
             <div className={styles.InfoPanel}>
               <ul className={styles.ulNavLink}>
                 <li className={styles.liNavLink}>
-                  <NavLink activeClassName={styles.activeNavLink} exact to="/PersonalInformation">
+                  <NavLink activeClassName={styles.activeNavLink} exact to="/">
                     Information
                   </NavLink>
                 </li>
@@ -39,7 +56,7 @@ export class Main extends Component {
               </ul>
             </div>
             <Switch>
-              <Route exact path="/PersonalInformation" component={ComponentPersonalInformation} />
+              <Route exact path="/" component={()=>(<ComponentPersonalInformation testconsole="hello"/>)} />
               <Route exact path="/SkillsAndLocation" component={ComponentSkilsAndLocation} />
               <Route exact path="/Portfolio" component={ComponentPorfolio} />
             </Switch>

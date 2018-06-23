@@ -9,22 +9,16 @@
   margin: 15px 0px;
   font-size: 1rem;
 }
-.ComponentPersonalInformation input:invalid {
-  border-bottom: 1px solid indianred;
-}
-
-.ComponentPersonalInformation input::-webkit-input-placeholder {
-  font-size: 1rem;
-}
-
 .InformationNameEmailPhone {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 10px;
 }
-
-.InformationAdress{
-    display:grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap:10px;
+.InformationAdress {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+.Invalid{
+  border-bottom:1px solid indianred !important;
 }
