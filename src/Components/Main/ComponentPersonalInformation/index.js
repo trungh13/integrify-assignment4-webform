@@ -3,7 +3,8 @@ import styles from "./index.css";
 
 import ComponentFormHeader from "../ComponentFormHeader";
 import Button from "../ComponentButton";
-export default class ComponentPersonalInformation extends Component {
+
+class ComponentPersonalInformation extends Component {
   state = {
     fullName: "",
     email: "",
@@ -16,13 +17,15 @@ export default class ComponentPersonalInformation extends Component {
     postalCode: "",
     hearAboutUs: ""
   };
-
+  
   handleChange = e =>
     this.setState({
       [e.target.name]: e.target.value
     });
   handleButton = e => {
     e.preventDefault();
+    this.props.history.push("/SkillsAndLocation")
+    this.props.handleSubmit(this.state)
   };
   isValidated = (fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs) => {
     const errors={
@@ -45,9 +48,8 @@ export default class ComponentPersonalInformation extends Component {
 
   render() {
     const {fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs} = this.state;
-    const errors=this.isValidated(fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs)
-    console.log(errors)
-    console.log(this.isDisabledButton(errors))
+    const errors=this.isValidated(fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs);
+    
     return (
       <div className={styles.ComponentPersonalInformation}>
         <ComponentFormHeader heading="1. Personal Information" />
@@ -147,8 +149,10 @@ export default class ComponentPersonalInformation extends Component {
           placeholder="How did you hear about us ?"
           value={hearAboutUs}
         />
-        <Button btnName="Next" isValidated={this.isDisabledButton(errors)} onClick={this.handleButton} />
+        <Button btnName="Next" href="/SkillsAndLocation" isValidated={this.isDisabledButton(errors)} onClick={this.handleButton} />
       </div>
     );
   }
 }
+
+export default (ComponentPersonalInformation);

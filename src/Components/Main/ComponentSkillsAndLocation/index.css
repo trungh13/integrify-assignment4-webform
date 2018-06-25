@@ -20,6 +20,9 @@
   background-color: #1fb3e5;
   color: white;
 }
+input[type="checkbox"],input[type="checkbox"]+label{
+  margin:0;
+}
 .SkillAndLocation {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -27,6 +30,7 @@
 .CheckBox {
   display: grid;
   grid-template-columns: 20px 1fr;
+  height:30px;
 }
 .CheckBox * {
   align-self: center;
