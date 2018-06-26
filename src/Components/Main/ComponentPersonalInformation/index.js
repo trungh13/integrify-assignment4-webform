@@ -15,7 +15,19 @@ class ComponentPersonalInformation extends Component {
     state: "",
     country: "",
     postalCode: "",
-    hearAboutUs: ""
+    hearAboutUs: "",
+    isTouched:{
+      fullName: false,
+      email: false,
+      reEmail: false,
+      phone: false,
+      address: false,
+      city: false,
+      state: false,
+      country: false,
+      postalCode: false,
+      hearAboutUs: false,
+    }
   };
   componentDidMount() {
     const {fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs}=this.props.data;
@@ -32,7 +44,6 @@ class ComponentPersonalInformation extends Component {
       hearAboutUs: hearAboutUs
     })
   }
-  
   handleChange = e =>
     this.setState({
       [e.target.name]: e.target.value
@@ -42,6 +53,11 @@ class ComponentPersonalInformation extends Component {
     this.props.history.push("/SkillsAndLocation")
     this.props.handleSubmit(this.state)
   };
+  handleFocus =e =>{
+    this.setState({
+      isTouched:{...this.state.isTouched, [e.target.name]:true}
+    })
+  }
   isValidated = (fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs) => {
     const errors={
       fullName: /^[a-zA-Z ]{1,}$/.test(fullName),
@@ -62,7 +78,7 @@ class ComponentPersonalInformation extends Component {
   }
 
   render() {
-    const {fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs} = this.state;
+    const {fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs,isTouched} = this.state;
     const errors=this.isValidated(fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs);
     
     return (
@@ -75,25 +91,28 @@ class ComponentPersonalInformation extends Component {
         <div className={styles.InformationNameEmailPhone}>
           <div className={styles.InformationNameEmail}>
             <input
-              className={errors.fullName?'':styles.Invalid}
+              className={!isTouched.fullName||errors.fullName?'':styles.Invalid}
               type="text"
               name="fullName"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="Full name*"
               value={fullName}
             />
             <input
-              className={errors.email?'':styles.Invalid}
+              className={!isTouched.email||errors.email?'':styles.Invalid}
               type="text"
               name="email"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="Email* "
               value={email}
             />
             <input
-              className={errors.reEmail?'':styles.Invalid}
+              className={!isTouched.reEmail||errors.reEmail?'':styles.Invalid}
               type="text"
               name="reEmail"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="Re-enter email*"
               value={reEmail}
@@ -101,9 +120,10 @@ class ComponentPersonalInformation extends Component {
           </div>
           <div className={styles.InformationPhone}>
             <input
-              className={errors.phone?'':styles.Invalid}
+              className={!isTouched.phone||errors.phone?'':styles.Invalid}
               type="number"
               name="phone"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="Phone#*"
               value={phone}
@@ -111,9 +131,10 @@ class ComponentPersonalInformation extends Component {
           </div>
         </div>
         <input
-          className={errors.address?'':styles.Invalid}
+          className={!isTouched.address||errors.address?'':styles.Invalid}
           type="text"
           name="address"
+          onFocus={this.handleFocus}
           onChange={this.handleChange}
           placeholder="Address*"
           value={address}
@@ -121,9 +142,10 @@ class ComponentPersonalInformation extends Component {
         <div className={styles.InformationAdress}>
           <div className={styles.InformationAdressItem}>
             <input
-              className={errors.city?'':styles.Invalid}            
+              className={!isTouched.city||errors.city?'':styles.Invalid}            
               type="text"
               name="city"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="City*"
               value={city}
@@ -131,9 +153,10 @@ class ComponentPersonalInformation extends Component {
           </div>
           <div className={styles.InformationAdressItem}>
             <input
-              className={errors.state?'':styles.Invalid}
+              className={!isTouched.state||errors.state?'':styles.Invalid}
               type="text"
               name="state"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="State"
               value={state}
@@ -141,9 +164,10 @@ class ComponentPersonalInformation extends Component {
           </div>
           <div className={styles.InformationAdressItem}>
             <input
-              className={errors.country?'':styles.Invalid}
+              className={!isTouched.country||errors.country?'':styles.Invalid}
               type="text"
               name="country"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="Country/Region*"
               value={country}
@@ -151,9 +175,10 @@ class ComponentPersonalInformation extends Component {
           </div>
           <div className={styles.InformationAdressItem}>
             <input
-              className={errors.postalCode?'':styles.Invalid}
+              className={!isTouched.postalCode||errors.postalCode?'':styles.Invalid}
               type="number"
               name="postalCode"
+              onFocus={this.handleFocus}
               onChange={this.handleChange}
               placeholder="Zip/Postal code"
               value={postalCode}
@@ -161,9 +186,10 @@ class ComponentPersonalInformation extends Component {
           </div>
         </div>
         <input
-          className={errors.hearAboutUs?'':styles.Invalid}
+          className={!isTouched.hearAboutUs||errors.hearAboutUs?'':styles.Invalid}
           type="text"
           name="hearAboutUs"
+          onFocus={this.handleFocus}
           onChange={this.handleChange}
           placeholder="How did you hear about us ?"
           value={hearAboutUs}
