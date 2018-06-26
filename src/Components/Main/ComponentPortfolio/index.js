@@ -29,13 +29,23 @@ export default class ComponentPortfolio extends Component {
   };
   handleButton = e => {
     e.preventDefault();
-    this.props.history.push("/Display")
-    this.props.handleSubmit(this.state)
+    const confirm = window.confirm("Are you ready to submit the whole form ?")
+    confirm ? (this.props.history.push("/Display"),
+    this.props.handleSubmit(this.state)):{}
   };
   render() {
     const errors = this.isValidated(this.state.portfolioLink);
     return (
       <div className={styles.ComponentPortfolio}>
+        <div className={styles.navbar}>
+          {this.props.nav}
+          <Button
+          btnName="Submit"
+          href="/Display"
+          isValidated={this.isDisabledButton(errors)}
+          onClick={this.handleButton}
+        />
+        </div>
         <ComponentFormHeader heading="3. Portfolio" />
         <p>
           Prove you're IBM's next great designer by showing us who you are. What you've done. How
@@ -55,12 +65,6 @@ export default class ComponentPortfolio extends Component {
           rows={10}
           onChange={this.handleChange}
           placeholder="Anything else (another link, availability, etc.)?"
-        />
-        <Button
-          btnName="Submit"
-          href="/SkillsAndLocation"
-          isValidated={this.isDisabledButton(errors)}
-          onClick={this.handleButton}
         />
       </div>
     );

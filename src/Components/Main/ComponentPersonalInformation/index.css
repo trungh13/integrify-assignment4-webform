@@ -1,6 +1,12 @@
 .ComponentPersonalInformation {
   display: grid;
 }
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:0;
+}
 .ComponentPersonalInformation input {
   width: 100%;
   border: none;

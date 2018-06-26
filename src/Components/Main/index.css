@@ -1,4 +1,5 @@
 .ulNavLink {
+  margin:0;
 }
 .liNavLink {
   display: inline-block;
@@ -20,7 +21,7 @@
 .liNavLink a.activeNavLink {
   color: indianred;
 }
-.liNavLink a::after:has( a.activeNavLink) {
+.liNavLink a.activeNavLink::after {
     content: "";
     border-right: 7px solid indianred;
   }

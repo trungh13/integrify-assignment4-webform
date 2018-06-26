@@ -31,52 +31,45 @@ export class Main extends Component {
   };
   render() {
     console.log("main", this.state.form);
+    const nav=(<ul className={styles.ulNavLink}>
+    <li className={styles.liNavLink}>
+      <NavLink disabled activeClassName={styles.activeNavLink} exact to="/">
+        Information
+      </NavLink>
+    </li>
+    <li className={styles.liNavLink}>
+      <NavLink activeClassName={styles.activeNavLink} exact to="/SkillsAndLocation">
+        Skills
+      </NavLink>
+    </li>
+    <li className={styles.liNavLink}>
+      <NavLink activeClassName={styles.activeNavLink} exact to="/Portfolio">
+        Portfolio
+      </NavLink>
+    </li>
+  </ul>)
     return (
       <div className={styles.Main}>
-        <Router>
-          <form action="">
-            <div className={styles.InfoPanel}>
-              <ul className={styles.ulNavLink}>
-                <li className={styles.liNavLink}>
-                  <NavLink disabled activeClassName={styles.activeNavLink} exact to="/">
-                    Information
-                  </NavLink>
-                </li>
-                <li className={styles.liNavLink}>
-                  <NavLink activeClassName={styles.activeNavLink} exact to="/SkillsAndLocation">
-                    Skills
-                  </NavLink>
-                </li>
-                <li className={styles.liNavLink}>
-                  <NavLink activeClassName={styles.activeNavLink} exact to="/Portfolio">
-                    Portfolio
-                  </NavLink>
-                </li>
-                <li className={styles.liNavLink}>
-                  <NavLink activeClassName={styles.activeNavLink} exact to="/Display">
-                    Review Form
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
+        <Router basename="">
+          <form action="">           
             <Switch>
               <Route
                 exact
                 path="/SkillsAndLocation"
                 component={props => (
-                  <ComponentSkillsAndLocation {...props} handleSubmit={this.handleSubmit} />
+                  <ComponentSkillsAndLocation {...props} data={this.state.form} nav={nav} handleSubmit={this.handleSubmit} />
                 )}
               />
               <Route
                 exact
                 path="/Portfolio"
                 component={props => (
-                  <ComponentPortfolio {...props} handleSubmit={this.handleSubmit} />
+                  <ComponentPortfolio {...props} data={this.state.form} handleSubmit={this.handleSubmit} nav={nav}/>
                 )}
               />
               <Route
                 exact
-                path="/display"
+                path="/Display"
                 component={props => (
                   <ComponentReviewForm {...props} data={this.state.form} />
                 )}
@@ -85,7 +78,7 @@ export class Main extends Component {
                 exact
                 path="/"
                 component={props => (
-                  <ComponentPersonalInformation {...props} handleSubmit={this.handleSubmit} />
+                  <ComponentPersonalInformation {...props} data={this.state.form} nav={nav} handleSubmit={this.handleSubmit}  />
                 )}
               />
             </Switch>

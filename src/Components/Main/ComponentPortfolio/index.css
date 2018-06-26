@@ -16,3 +16,9 @@
 .Invalid {
   border-bottom: 1px solid indianred !important;
 }
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:0;
+}

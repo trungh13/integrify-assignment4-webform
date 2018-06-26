@@ -17,6 +17,21 @@ class ComponentPersonalInformation extends Component {
     postalCode: "",
     hearAboutUs: ""
   };
+  componentDidMount() {
+    const {fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs}=this.props.data;
+    this.setState({
+      fullName: fullName,
+      email: email,
+      reEmail: reEmail,
+      phone: phone,
+      address: address,
+      city: city,
+      state: state,
+      country: country,
+      postalCode: postalCode,
+      hearAboutUs: hearAboutUs
+    })
+  }
   
   handleChange = e =>
     this.setState({
@@ -52,6 +67,10 @@ class ComponentPersonalInformation extends Component {
     
     return (
       <div className={styles.ComponentPersonalInformation}>
+        <div className={styles.navbar}>
+        {this.props.nav}
+          <Button btnName="Next" href="/SkillsAndLocation" isValidated={this.isDisabledButton(errors)} onClick={this.handleButton} />
+        </div>
         <ComponentFormHeader heading="1. Personal Information" />
         <div className={styles.InformationNameEmailPhone}>
           <div className={styles.InformationNameEmail}>
@@ -149,7 +168,6 @@ class ComponentPersonalInformation extends Component {
           placeholder="How did you hear about us ?"
           value={hearAboutUs}
         />
-        <Button btnName="Next" href="/SkillsAndLocation" isValidated={this.isDisabledButton(errors)} onClick={this.handleButton} />
       </div>
     );
   }

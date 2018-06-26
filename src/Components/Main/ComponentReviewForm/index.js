@@ -42,7 +42,7 @@ const ComponentReviewForm = props => {
       })
   return (
     <div className={styles.ComponentReviewForm}>
-      <ComponentFormHeader heading="4. Review form" />
+      <ComponentFormHeader heading="Review form" />
         {renderList}
       <Button btnName="Print" onClick={e => handlePrint(e)} />
     </div>

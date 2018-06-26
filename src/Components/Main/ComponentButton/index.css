@@ -5,6 +5,7 @@
     border:none;
     width: fit-content;
     font-size:1rem;
+    margin-bottom:0;
 }
 .ComponentButton:disabled{
     background-color:gray;
