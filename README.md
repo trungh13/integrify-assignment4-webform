@@ -4,12 +4,14 @@ Web form: Let's talk with user can fill the personal information following templ
 
 ## Version
 v0.2 ReactJS [Source code in master-react branch](https://github.com/trungh13/integrify-assignment4-webform/tree/master)
+
 ![Version 0.2 React](./screenshot2.png)
 * Redo the application with ReactJS/ CSS Modules/React Router v4 
 * Passing props though React Router.
 * Deploy it to [gh-pages branch](https://github.com/trungh13/integrify-assignment4-webform/tree/gh-pages) using [react-gh-pages](https://github.com/gitname/react-gh-pages)
 
 v0.1 VanillaJS [Source code in master branch](https://github.com/trungh13/integrify-assignment4-webform/tree/master).
+
 ![Version 0.1 Vanila JS](./screenshot1.png)
   
   * Form with input type text, number, checkbox, radio, textarea.
