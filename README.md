@@ -1,6 +1,6 @@
 # Web form: Let's talk  
 
-Web form: Let's talk with user can fill the personal information following template. Here is [ the live demo](https://trungh13.github.io/integrify-assignment4-webform/SkillsAndLocation) and the screenshot of application below in version.
+Web form: Let's talk with user can fill the personal information following template. Here is [ the live demo](https://trungh13.github.io/integrify-assignment4-webform/) and the screenshot of application below in version.
 
 ## Version
 v0.2 ReactJS [Source code in master-react branch](https://github.com/trungh13/integrify-assignment4-webform/tree/master)
