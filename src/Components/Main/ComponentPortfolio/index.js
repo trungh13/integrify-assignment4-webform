@@ -14,7 +14,6 @@ export default class ComponentPortfolio extends Component {
   };
   componentDidMount() {
     const { portfolioLink, additionalInformation } = this.props.data;
-    console.log(portfolioLink,additionalInformation)
     this.setState({
       portfolioLink: portfolioLink,
       additionalInformation: additionalInformation
@@ -22,7 +21,7 @@ export default class ComponentPortfolio extends Component {
   }
   isValidated = portfolioLink => {
     const errors = {
-      portfolioLink: /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
+      portfolioLink: /^(https?:\/\/)?([\da-z.-]+).([a-z.]{2,6})([/\w .-]*)*\/?$/.test(
         portfolioLink
       )
     };
@@ -44,7 +43,7 @@ export default class ComponentPortfolio extends Component {
   };
   handleButton = e => {
     e.preventDefault();
-    window.confirm("Are you ready to submit the whole form ?")
+    return window.confirm("Are you ready to submit the whole form ?")
       ? (this.props.history.push("/Display"), this.props.handleSubmit(this.state))
       : {};
   };

@@ -26,8 +26,8 @@ const ComponentReviewForm = props => {
     },
     { title: "How did you hear about us?", value: props.data.hearAboutUs },
     { title: "Your primary design discipline :", value: props.data.skillsDesign},
-    { title: "Experience with any other disciplines :", value: [...props.data.experiencedSkills]},
-    { title: "Interested in working location(s) :", value: [...props.data.workingLocation] },
+    { title: "Experience with any other disciplines :", value: [props.data.experiencedSkills].join(`, `)},
+    { title: "Interested in working location(s) :", value: [props.data.workingLocation].join(`, `) },
     { title: "Portfolio link :", value: props.data.portfolioLink },
     { title: "Additional information :", value: props.data.additionalInformation },
   ];

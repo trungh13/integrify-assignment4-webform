@@ -9,6 +9,15 @@ export default class ComponentSkillsAndLocation extends Component {
     experiencedSkills: [],
     workingLocation: []
   };
+  componentDidMount() {
+    const { skillsDesign, experiencedSkills, workingLocation } = this.props.data;
+    this.setState({
+      skillsDesign: skillsDesign,
+      experiencedSkills: experiencedSkills,
+      workingLocation: workingLocation
+    });
+  }
+
   handleButton = e => {
     e.preventDefault();
     this.props.history.push("/Portfolio");
@@ -26,16 +35,16 @@ export default class ComponentSkillsAndLocation extends Component {
   };
   render() {
     const skillsDesign = [
-      { defaultChecked: true, id: "design-research", value: "Design Research" },
-      { defaultChecked: false, id: "visual-design", value: "Visual Design" },
-      { defaultChecked: false, id: "ux-design", value: "UX Design" },
-      { defaultChecked: false, id: "frontend-dev", value: "Front-end Dev" }
+      { id: "design-research", value: "Design Research" },
+      { id: "visual-design", value: "Visual Design" },
+      { id: "ux-design", value: "UX Design" },
+      { id: "frontend-dev", value: "Front-end Dev" }
     ];
     const renderSkillList = skillsDesign.map(skill => (
       <React.Fragment key={skill.id}>
         <input
           type="radio"
-          defaultChecked={skill.defaultChecked}
+          checked={this.state.skillsDesign === skill.value}
           name="skillsDesign"
           id={skill.id}
           value={skill.value}
@@ -49,16 +58,18 @@ export default class ComponentSkillsAndLocation extends Component {
       { id: "exp-ux-design", value: "UX design" },
       { id: "exp-frontend-dev", value: "Front-end dev" }
     ];
+
     const workingLocation = [
-      { id: "austin-texas", value: "Austin, Texas" },
-      { id: "newyork-newyork", value: "New York, New York" },
-      { id: "toronto-cananda", value: "Toronto, Canada" },
-      { id: "shanghai-china", value: "ShangHai, China" },
-      { id: "dublin-ireland", value: "Dublin, Ireland" },
-      { id: "hursley-UK", value: "Hursley, United Kingdom" },
-      { id: "boeblingen-germany", value: "Boeblingen, Germany" },
+      { id: "austin-texas", value: "Austin - Texas" },
+      { id: "newyork-newyork", value: "New York - New York" },
+      { id: "toronto-cananda", value: "Toronto - Canada" },
+      { id: "shanghai-china", value: "ShangHai - China" },
+      { id: "dublin-ireland", value: "Dublin - Ireland" },
+      { id: "hursley-UK", value: "Hursley - United Kingdom" },
+      { id: "boeblingen-germany", value: "Boeblingen - Germany" },
       { id: "somewhereelse", value: "Somewhere else" }
     ];
+
     const renderCheckBox = (type, typeString) =>
       type.map(checkBox => (
         <div className={styles.CheckBox} key={checkBox.id}>
@@ -68,6 +79,7 @@ export default class ComponentSkillsAndLocation extends Component {
             id={checkBox.id}
             value={checkBox.value}
             onChange={this.handleChange}
+            checked={this.state[typeString].includes(checkBox.value)}
           />
           <label htmlFor={checkBox.id}>{checkBox.value}</label>
         </div>

@@ -44,6 +44,7 @@ class ComponentPersonalInformation extends Component {
       hearAboutUs: hearAboutUs
     })
   }
+
   handleChange = e =>
     this.setState({
       [e.target.name]: e.target.value
@@ -51,8 +52,13 @@ class ComponentPersonalInformation extends Component {
   handleButton = e => {
     e.preventDefault();
     this.props.history.push("/SkillsAndLocation")
-    this.props.handleSubmit(this.state)
   };
+  submitDataToApp = () =>{
+    const {fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs,isTouched} = this.state;
+    const errors=this.isValidated(fullName,email,reEmail,phone,address,city,state,country,postalCode,hearAboutUs);
+    errors.includes(false)
+    this.props.handleSubmit(this.state)
+  }
   handleFocus =e =>{
     this.setState({
       isTouched:{...this.state.isTouched, [e.target.name]:true}
@@ -142,7 +148,7 @@ class ComponentPersonalInformation extends Component {
         <div className={styles.InformationAdress}>
           <div className={styles.InformationAdressItem}>
             <input
-              className={!isTouched.city||errors.city?'':styles.Invalid}            
+              className={!isTouched.city||errors.city?'':styles.Invalid}
               type="text"
               name="city"
               onFocus={this.handleFocus}

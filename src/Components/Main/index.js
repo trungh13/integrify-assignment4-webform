@@ -19,7 +19,7 @@ export class Main extends Component {
       country: "",
       postalCode: "",
       hearAboutUs: "",
-      skillsDesign: "",
+      skillsDesign: "Design Research",
       experiencedSkills: [],
       workingLocation: [],
       portfolioLink: "",
@@ -50,7 +50,7 @@ export class Main extends Component {
   </ul>)
     return (
       <div className={styles.Main}>
-        <Router basename="">
+        <Router basename="/integrify-assignment4-webform">
           <form action="">           
             <Switch>
               <Route
