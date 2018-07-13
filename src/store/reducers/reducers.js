@@ -1,5 +1,5 @@
 import { reducer as formReducer } from 'redux-form';
-import { combineReducers } from 'react-redux';
+import { combineReducers } from 'redux';
 
 export default combineReducers({
   form: formReducer,
