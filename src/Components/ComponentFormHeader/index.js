@@ -1,12 +1,16 @@
-import React from "react";
-import styles from "./index.css";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const ComponentFormHeader = props => {
-  return (
-    <React.Fragment>
-      <h3 className={styles.FormHeader}>{props.heading}</h3>
-    </React.Fragment>
-  );
+import styles from './index.css';
+
+const ComponentFormHeader = ({ heading }) => (
+  <React.Fragment>
+    <h3 className={styles.FormHeader}>{heading}</h3>
+  </React.Fragment>
+);
+
+ComponentFormHeader.propTypes = {
+  heading: PropTypes.string.isRequired,
 };
 
 export default ComponentFormHeader;

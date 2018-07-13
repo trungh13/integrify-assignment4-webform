@@ -1,57 +1,47 @@
 import React from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
-import { reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
+
 import styles from './index.css';
 import PersonalInformation from './PersonalInformation';
 import SkillsAndLocation from './SkillsAndLocation';
 import Portfolio from './Portfolio';
 import ReviewForm from './ReviewForm';
 
-const Main = () => {
-  const nav = (
-    <ul className={styles.ulNavLink}>
-      <li className={styles.liNavLink}>
-        <NavLink disabled activeClassName={styles.activeNavLink} exact to="/">
-          Information
-        </NavLink>
-      </li>
-      <li className={styles.liNavLink}>
-        <NavLink activeClassName={styles.activeNavLink} exact to="/SkillsAndLocation">
-          Skills
-        </NavLink>
-      </li>
-      <li className={styles.liNavLink}>
-        <NavLink activeClassName={styles.activeNavLink} exact to="/Portfolio">
-          Portfolio
-        </NavLink>
-      </li>
-    </ul>
-  );
-  return (
-    <Switch>
-      <Route
-        exact
-        path="/SkillsAndLocation"
-        component={props => <SkillsAndLocation {...props} nav={nav} />}
-      />
-      <Route
-        exact
-        path="/Portfolio"
-        component={props => <Portfolio {...props} nav={nav} />}
-      />
-      <Route
-        exact
-        path="/Display"
-        component={props => <ReviewForm {...props} />}
-      />
-      <Route
-        exact
-        path="/"
-        component={props => <PersonalInformation {...props} nav={nav} />}
-      />
-    </Switch>
-  );
+class Main extends React.Component {
+  state = { step: 1 };
+
+  nextPage = () => {
+    this.setState(prevState => ({ step: prevState.step + 1 }));
+  };
+
+  previousPage = () => {
+    this.setState(prevState => ({ step: prevState.step - 1 }));
+  };
+
+  switchRender = () => {
+    const { step } = this.state;
+    const { onSubmit } = this.props;
+    switch (step) {
+      case 1:
+        return <PersonalInformation onSubmit={this.nextPage} />;
+      case 2:
+        return <SkillsAndLocation previousPage={this.previousPage} onSubmit={this.nextPage} />;
+      case 3:
+        return <Portfolio previousPage={this.previousPage} onSubmit={onSubmit} />;
+      case 4:
+        return <ReviewForm />;
+      default:
+        return null;
+    }
+  };
+
+  render() {
+    return <div>{this.switchRender()}</div>;
+  }
+}
+
+Main.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
-export default reduxForm({
-  form: 'letTalkForm',
-})(Main);
+
+export default Main;
