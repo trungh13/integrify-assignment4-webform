@@ -108,5 +108,13 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "guppy": {
+    "id": "integrify-assignment4-webform-react",
+    "name": "integrify-assignment4-webform-react",
+    "type": "create-react-app",
+    "color": "#c41d00",
+    "icon": null,
+    "createdAt": 1531637280906
   }
 }

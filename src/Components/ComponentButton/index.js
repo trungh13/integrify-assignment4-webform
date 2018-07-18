@@ -2,14 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './index.css';
 
-const ComponentButton = ({ onClick, isValidated = false, btnName = '' }) => (
-  <button onClick={onClick} disabled={isValidated} className={styles.ComponentButton} type="button">
+const ComponentButton = ({ onClick, isDisabled, btnName = '' }) => (
+  <button onClick={onClick} disabled={isDisabled} className={styles.ComponentButton} type="button">
     {btnName}
   </button>
 );
 ComponentButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  isValidated: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
   btnName: PropTypes.string.isRequired,
+};
+
+ComponentButton.defaultProps = {
+  isDisabled: false,
 };
 export default ComponentButton;

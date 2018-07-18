@@ -1,0 +1,11 @@
+.inputField{
+  position: relative;
+}
+.error{
+  position: absolute;
+  color: indianred;
+  z-index: 1;
+  bottom: -20px;
+  left: 0px;
+  font-size: 0.9rem;
+}

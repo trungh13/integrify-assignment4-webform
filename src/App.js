@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import styles from './index.css';
 
 import Header from './containers/Header';
@@ -7,12 +7,12 @@ import Main from './containers/Main';
 import Footer from './containers/Footer';
 
 const App = () => (
-  <Router>
+  // <Router>
     <div className={styles.App}>
       <Header />
-      {/* <Main />
-      <Footer /> */}
+      <Main />
+      {/* <Footer /> */}
     </div>
-  </Router>
+  // </Router>
 );
 export default App;

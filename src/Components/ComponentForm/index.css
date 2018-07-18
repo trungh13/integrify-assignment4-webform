@@ -1,3 +1,7 @@
+.Form{
+    width: 800px;
+    margin:auto;
+}
 .FormHeader{
     border-bottom: 4px #1FB3E5 solid;
     padding: 15px 0px;

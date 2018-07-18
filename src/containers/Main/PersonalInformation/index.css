@@ -1,4 +1,4 @@
-.ComponentPersonalInformation {
+.PersonalInformation {
   display: grid;
 }
 .navbar{
@@ -7,7 +7,7 @@
   align-items: center;
   margin-bottom:0;
 }
-.ComponentPersonalInformation input {
+.PersonalInformation input {
   width: 100%;
   border: none;
   border-bottom: 1px gray solid;
@@ -20,11 +20,8 @@
   grid-template-columns: 2fr 1fr;
   grid-gap: 10px;
 }
-.InformationAdress {
+.InformationAddress {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-}
-.Invalid{
-  border-bottom:1px solid indianred !important;
 }
